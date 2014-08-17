@@ -1,3 +1,4 @@
+<div>Signed in as... <%= current_user.id %><%= current_user.email %></div>
 <%= form_for :ad, url: ads_path do |f| %>
   <p>
     <%= f.label :title %><br>
