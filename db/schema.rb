@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140821002802) do
+ActiveRecord::Schema.define(version: 20140821230550) do
 
   create_table "ads", force: true do |t|
     t.string   "title"
@@ -19,10 +19,18 @@ ActiveRecord::Schema.define(version: 20140821002802) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.string   "ad_image"
   end
 
   add_index "ads", ["user_id"], name: "index_ads_on_user_id"
+
+  create_table "images", force: true do |t|
+    t.string   "name"
+    t.string   "image"
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
