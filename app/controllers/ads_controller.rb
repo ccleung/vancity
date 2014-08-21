@@ -18,7 +18,7 @@ end
 
 private
 	def ad_params
-		params.require(:ad).permit(:title, :description)
+		params.require(:ad).permit(:title, :description, :ad_image)
 	end
 	before_action :authenticate_user!
 end

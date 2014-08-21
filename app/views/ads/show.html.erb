@@ -12,3 +12,15 @@
   <strong>UserId:</strong>
   <%= @ad.user_id %>
 </p>
+
+<p>
+	<strong>Image:</strong>
+	<br/>
+	<%= image_tag @ad.ad_image.url %>
+	<br/>
+	<%= @ad.ad_image.url %>
+	<br/>
+	<%= @ad.ad_image.current_path %>
+	<br/>
+	<%= @ad.ad_image.identifier %>
+</p>
