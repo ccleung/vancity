@@ -16,11 +16,11 @@
 <p>
 	<strong>Image:</strong>
 	<br/>
-	<%= image_tag @ad.image.image.url %>
+	<%= image_tag @ad.image.image.url if @ad.image %>
 	<br/>
-	<%= @ad.image.image.url %>
+	<%= @ad.image.image.url if @ad.image %>
 	<br/>
-	<%= @ad.image.image.current_path %>
+	<%= @ad.image.image.current_path if @ad.image %>
 	<br/>
-	<%= @ad.image.image.identifier %>
+	<%= @ad.image.image.identifier if @ad.image %>
 </p>
