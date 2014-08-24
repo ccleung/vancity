@@ -1,6 +1,6 @@
 <div>Signed in as... <%= current_user.id %><%= current_user.email %></div>
 <div class="container">
-<%= simple_form_for :ad, url: ads_path , :html => {:multipart => true, class: 'form-horizontal'} do |f| %>
+<%= simple_form_for :post, url: posts_path , :html => {:multipart => true, class: 'form-horizontal'} do |f| %>
 
     <%= f.input :title %>
 
