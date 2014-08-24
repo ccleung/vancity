@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140823210541) do
+ActiveRecord::Schema.define(version: 20140824013849) do
 
   create_table "ads", force: true do |t|
     t.string   "title"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 20140823210541) do
 
   add_index "ads", ["slug"], name: "index_ads_on_slug"
   add_index "ads", ["user_id"], name: "index_ads_on_user_id"
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.boolean  "parent"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false

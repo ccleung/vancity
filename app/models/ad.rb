@@ -1,6 +1,7 @@
 class Ad < ActiveRecord::Base
 	belongs_to :user
-	has_one :image, as: :imageable
+	has_many :images, as: :imageable
+
 	extend FriendlyId
 	friendly_id :title, use: [:slugged, :history]
 end
