@@ -10,13 +10,33 @@ def create
 	@post = Post.new
 	@post.title = post_params[:title]
 	@post.description = post_params[:description]
-
-	@image = Image.new
-	@image.image = post_params[:image]
-	@image.imageable = @post
 	@post.user_id = current_user.id
-	@post.save
-	@image.save
+
+	#if image exists we need to create a new image
+	if post_params[:image]
+		@image = Image.new
+		@image.image = post_params[:image]
+		@image.imageable = @post
+		@image.save
+	end
+
+	#if location exists we need to create a new location
+	if post_params[:location]
+		#city, region, country
+		locationInfo = post_params[:location].split(",")
+
+		#@location = nil
+		if (locationInfo.count == 3)
+			conditions = { :city => locationInfo[0], 
+	               :region => locationInfo[1],
+	               :country => locationInfo[2] }
+			@location = Location.find_or_create_by(conditions)
+			@post.location_id = @location.id
+		end
+    end
+
+    @post.save
+
 	redirect_to @post
 end
 
@@ -40,7 +60,7 @@ end
 
 private
 	def post_params
-		params.require(:post).permit(:title, :description, :image)
+		params.require(:post).permit(:title, :description, :image, :location)
 	end
 	before_action :authenticate_user!
 end
