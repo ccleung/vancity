@@ -24,4 +24,26 @@
 
 <br>
 
+<h3>UNFILTERED List of Posts</h3>
+<table class="table">
+  <tbody>
+    <% @unfilteredPosts.each do |post| %>
+      <tr>
+        <%= render post %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h3>FILTERED List of Posts</h3>
+<table class="table">
+  <tbody>
+    <% @filteredPosts.each do |post| %>
+      <tr>
+        <%= render post %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <%= link_to 'New Location', new_location_path %>

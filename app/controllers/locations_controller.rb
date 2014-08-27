@@ -5,6 +5,10 @@ class LocationsController < ApplicationController
   # GET /locations.json
   def index
     @locations = Location.all
+    #TEMP: Display some data and filtering
+    @toronto = Location.find_by_id(1)
+    @unfilteredPosts = @toronto.posts
+    @filteredPosts = @toronto.posts.category(4)
   end
 
   # GET /locations/1

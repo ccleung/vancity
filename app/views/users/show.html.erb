@@ -4,6 +4,6 @@
 <p>Num Posts: <%= @user.posts.size %> </p>
 <% @user.posts.each do |post|  %>
  <p>
-      <%= post.title %> <%= post.description %>
+      <%= render post %>
  </p>
 <% end %>

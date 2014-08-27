@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :location
+	belongs_to :category
 	has_one :image, as: :imageable
 	scope :category, -> (category_id) { where category_id: category_id }
 
