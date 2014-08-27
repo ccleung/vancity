@@ -14,6 +14,7 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'carrierwave'
 gem 'friendly_id'
+gem 'scope', '~> 0.2.3'
 
 gem 'simple_form'
 gem 'nested_form'

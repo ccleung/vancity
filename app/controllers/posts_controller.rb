@@ -35,6 +35,12 @@ def create
 		end
     end
 
+    #TODO: don't create new caetgories, use existing static categories
+    if post_params[:category]
+    	@category = Category.find_or_create_by(:name => post_params[:category])
+    	@post.category_id = @category.id
+    end
+
     @post.save
 
 	redirect_to @post
@@ -60,7 +66,7 @@ end
 
 private
 	def post_params
-		params.require(:post).permit(:title, :description, :image, :location)
+		params.require(:post).permit(:title, :description, :image, :location, :category)
 	end
 	before_action :authenticate_user!
 end
