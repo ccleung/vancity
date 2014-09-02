@@ -1,3 +1,20 @@
-<h3>Welcome</h3>
-<p><%= link_to 'Users:', users_path %> <%= User.count %> registered</p>
-<p><%= link_to 'Create post', :controller => :posts, :action => :new %></p>
+<section class="want-form">
+	<div class="post-form-create text-center primary-color">
+		<h3>Post What You Need</h3>
+		<input class="form-control" type="text" placeholder="I need ...">
+	</div>
+</section>
+
+<section class="reset-padding padding-v recent-posts">
+	<div class="row">
+		<div class="col-md-8">
+			<div class="full">
+				<h1 class="post-section-title"><i class="fa fa-search"></i>Search for Posts</h1>
+				<h3 class="post-section-subtitle" style="margin-bottom: 0;">Use our awesome search tool to find what people need!</h3>
+			</div>
+
+		</div>
+		<div class="col-md-4">
+		</div>
+	</div>
+</section>
