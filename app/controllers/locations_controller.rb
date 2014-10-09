@@ -6,9 +6,10 @@ class LocationsController < ApplicationController
   def index
     @locations = Location.all
     #TEMP: Display some data and filtering
-    @toronto = Location.find_by_id(1)
-    @unfilteredPosts = @toronto.posts
-    @filteredPosts = @toronto.posts.category(4)
+    @location = Location.find_by_id(1)
+    @unfilteredPosts = @location.posts
+    # filter based on category id 4 for testing
+    @filteredPosts = @location.posts.category(4)
   end
 
   # GET /locations/1

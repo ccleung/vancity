@@ -27,9 +27,9 @@ def create
 
 		#@location = nil
 		if (locationInfo.count == 3)
-			conditions = { :city => locationInfo[0], 
-	               :region => locationInfo[1],
-	               :country => locationInfo[2] }
+			conditions = { :city => locationInfo[0].strip, 
+	               :region => locationInfo[1].strip,
+	               :country => locationInfo[2].strip }
 			@location = Location.find_or_create_by(conditions)
 			@post.location_id = @location.id
 		end

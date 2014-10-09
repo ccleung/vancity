@@ -7,3 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 user = CreateAdminService.new.call
 puts 'CREATED ADMIN USER: ' << user.email
+
+location = Location.find_or_create_by(city: 'Toronto', region: 'ON', country: 'Canada')
+
+puts 'CREATED LOCATION: ' << location.city
+
+Category.create([{ name: 'Services' }, { name: 'Personal' }, { name: 'Other' }])
