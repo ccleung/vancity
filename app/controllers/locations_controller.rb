@@ -7,9 +7,13 @@ class LocationsController < ApplicationController
     @locations = Location.all
     #TEMP: Display some data and filtering
     @location = Location.find_by_id(1)
-    @unfilteredPosts = @location.posts
-    # filter based on category id 4 for testing
-    @filteredPosts = @location.posts.category(4)
+    @unfilteredPosts = Array.new
+    @filteredPosts = Array.new
+    if !@location.nil?
+      @unfilteredPosts = @location.posts
+      # filter based on category id 4 for testing
+      @filteredPosts = @location.posts.category(4)
+    end
   end
 
   # GET /locations/1
