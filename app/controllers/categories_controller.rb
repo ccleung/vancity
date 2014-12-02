@@ -40,6 +40,8 @@ class CategoriesController < ApplicationController
   # PATCH/PUT /categories/1
   # PATCH/PUT /categories/1.json
   def update
+    #logger = ActiveSupport::TaggedLogging.new(Logger.new(STDOUT))
+    #logger.debug "#{params}"
     respond_to do |format|
       if @category.update(category_params)
         format.html { redirect_to @category, notice: 'Category was successfully updated.' }
@@ -69,6 +71,6 @@ class CategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:category).permit(:name, :parent)
+      params.require(:category).permit(:name, :category_id)
     end
 end
