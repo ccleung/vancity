@@ -1,72 +1,81 @@
 class PostsController < ApplicationController
+	before_action :load_categories, only: [:show, :edit, :update, :new, :index]
 
-def new
-end
+  # GET /posts
+  # GET /posts.json
+  def index
+    @posts = Post.all
+  end
 
-def create
-	#render plain: params[:post].inspect
-	#render plain: current_user.id
-	
-	@post = Post.new
-	@post.title = post_params[:title]
-	@post.description = post_params[:description]
-	@post.user_id = current_user.id
-
-	#if image exists we need to create a new image
-	if post_params[:image]
-		@image = Image.new
-		@image.image = post_params[:image]
-		@image.imageable = @post
-		@image.save
+	def new
+		@post = Post.new
 	end
 
-	#if location exists we need to create a new location
-	if post_params[:location]
-		#city, region, country
-		locationInfo = post_params[:location].split(",")
+	def create
+		#render plain: params[:post].inspect
+		#render plain: current_user.id
+		
+		@post = Post.new
+		@post.title = post_params[:title]
+		@post.description = post_params[:description]
+		@post.user_id = current_user.id
 
-		#@location = nil
-		if (locationInfo.count == 3)
-			conditions = { :city => locationInfo[0].strip, 
-	               :region => locationInfo[1].strip,
-	               :country => locationInfo[2].strip }
-			@location = Location.find_or_create_by(conditions)
-			@post.location_id = @location.id
+		#if image exists we need to create a new image
+		if post_params[:image]
+			@image = Image.new
+			@image.image = post_params[:image]
+			@image.imageable = @post
+			@image.save
 		end
-    end
 
-    #TODO: don't create new caetgories, use existing static categories
-    if post_params[:category]
-    	@category = Category.find_or_create_by(:name => post_params[:category])
-    	@post.category_id = @category.id
-    end
+		#if location exists we need to create a new location
+		if post_params[:location]
+			#city, region, country
+			locationInfo = post_params[:location].split(",")
 
-    @post.save
+			#@location = nil
+			if (locationInfo.count == 3)
+				conditions = { :city => locationInfo[0].strip, 
+		               :region => locationInfo[1].strip,
+		               :country => locationInfo[2].strip }
+				@location = Location.find_or_create_by(conditions)
+				@post.location_id = @location.id
+			end
+	  end
 
-	redirect_to @post
-end
+	  @post.category_id = post_params[:category]
 
-def show
-	#render plain: params
-	#params[:id] is now the slug
-	@post = Post.find_by_slug(params[:id])
-	#render plain: [request.path, post_path(@post)]
+    respond_to do |format|
+			if @post.save
+	      format.html { redirect_to @post, notice: 'Post was successfully created.' }
+	      format.json { render :show, status: :created, location: @post }
+	    else
+	      format.html { render :new }
+	      format.json { render json: @post.errors, status: :unprocessable_entity }
+	    end
+	  end
+	end
 
-	#make sure we use the most recent url path even when the slug has changed
-	if request.path != post_path(@post)
-		render plain: 'hello world'
-		redirect_to @post, status: :moved_permanently
-	else
-		respond_to do |format|
-			format.html # show.html.erb
-			format.json { render json: @post }
+	def show
+		#render plain: params
+		#params[:id] is now the slug
+		@post = Post.find_by_slug(params[:id])
+		#render plain: [request.path, post_path(@post)]
+
+		#make sure we use the most recent url path even when the slug has changed
+		if request.path != post_path(@post)
+			render plain: 'hello world'
+			redirect_to @post, status: :moved_permanently
 		end
 	end
-end
 
-private
-	def post_params
-		params.require(:post).permit(:title, :description, :image, :location, :category)
-	end
-	before_action :authenticate_user!
+	private
+		def load_categories
+			@categories = Category.all
+		end
+
+		def post_params
+			params.require(:post).permit(:title, :description, :image, :location, :category)
+		end
+		before_action :authenticate_user!
 end
