@@ -9,6 +9,12 @@
         var place = autocomplete.getPlace();
     });
 	</script>
+    <script>
+        $('input, select').keypress(
+            function(event) { 
+                return event.keyCode != 13; 
+            });
+    </script>
 <% end %>
 
 <div>Signed in as... <%= current_user.id %><%= current_user.email %></div>
