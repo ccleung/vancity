@@ -22,12 +22,12 @@
 	
 <%= simple_form_for(@post) do |f| %>
     <%= f.error_notification %>
-    
+
     <%= f.input :title %>
 
     <%= f.input :description, as: :text %>
 
-    <%= f.input :category, as: :select, collection: @categories, prompt: "Choose a category" %>
+    <%= f.input :category, as: :select, collection: @categories, prompt: "Choose a category", input_html: { required:"" } %>
 
     <%= f.input :location, input_html: { id: 'location' } %>
 
