@@ -1,28 +1,10 @@
 <% content_for :for_head do %>
-    <%= javascript_include_tag 'http://maps.google.com/maps/api/js?sensor=false&libraries=places&language=en-US' %>
-	<%= javascript_include_tag 'postForm' %>
+	<%= javascript_include_tag 'loadGoogleMaps' %>
     <%= javascript_include_tag 'disableReturn' %>
 <% end %>
 
-<div>Signed in as... <%= current_user.id %><%= current_user.email %></div>
 <div class="container">
-	
-<%= simple_form_for(@post) do |f| %>
-    <%= f.error_notification %>
-
-    <%= f.input :title %>
-
-    <%= f.input :description, as: :text %>
-
-    <%= f.input :category, as: :select, collection: @categories, prompt: "Choose a category", input_html: { required:"" } %>
-
-    <%= f.input :location, input_html: { id: 'location' } %>
-
-    <%= yield :for_head %>
-
-    <%= f.input :image, :as => :file %>
-
-    <%= f.button :submit %>
-
-<% end %>
+	<div class="row">
+        <%= render partial: 'form', layout: 'shared/sf_label', locals: { title: 'New Post' } %>
+    </div>
 </div>
