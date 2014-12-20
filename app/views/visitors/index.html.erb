@@ -17,7 +17,7 @@
     	<div class="row"><h1><%= @goods.name %></h1></div>
     	<% @goods.categories.each do |subcategory| %>
     		<div class="row" id="<%=subcategory.id%>">
-    			<h2><a href="#"><%= subcategory.name %></a></h2>
+    			<h2><%= link_to subcategory.name, category_posts_path(subcategory) %></h2>
     		</div>
     	<% end %>
     </div>
@@ -25,7 +25,7 @@
     	<div class="row"><h1><%= @services.name %></h1></div>
     	<% @services.categories.each do |subcategory| %>
     		<div class="row" id="<%=subcategory.id%>">
-    			<h2><a href="#"><%= subcategory.name %></a></h2>
+    			<h2><%= link_to subcategory.name, category_posts_path(subcategory) %></h2>
     		</div>
     	<% end %>
     </div>
