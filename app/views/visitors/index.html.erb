@@ -1,3 +1,7 @@
+<% content_for :extra_assets do %>
+	<%= stylesheet_link_tag 'visitor' %>
+<% end %>
+
 <section class="want-form">
 	<div class="post-form-create text-center primary-color">
 		<h3>Post What You Need</h3>
@@ -5,7 +9,30 @@
 	</div>
 </section>
 
-<section class="reset-padding padding-v recent-posts">
+<div class="container">
+	<%= debug(@goods.categories) if Rails.env.development? %> 
+	<%= debug(@services.categories) if Rails.env.development? %> 
+  <div class="row">
+    <div class="col-xs-6">
+    	<div class="row"><h1><%= @goods.name %></h1></div>
+    	<% @goods.categories.each do |subcategory| %>
+    		<div class="row" id="<%=subcategory.id%>">
+    			<h2><a href="#"><%= subcategory.name %></a></h2>
+    		</div>
+    	<% end %>
+    </div>
+    <div class="col-xs-6">
+    	<div class="row"><h1><%= @services.name %></h1></div>
+    	<% @services.categories.each do |subcategory| %>
+    		<div class="row" id="<%=subcategory.id%>">
+    			<h2><a href="#"><%= subcategory.name %></a></h2>
+    		</div>
+    	<% end %>
+    </div>
+  </div>
+</div>
+
+<!--<section class="reset-padding padding-v recent-posts">
 	<div class="row">
 		<div class="col-md-8">
 			<div class="full">
@@ -17,4 +44,4 @@
 		<div class="col-md-4">
 		</div>
 	</div>
-</section>
+</section>-->
