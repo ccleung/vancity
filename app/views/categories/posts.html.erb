@@ -1,0 +1,14 @@
+<%= debug(@category.posts) if Rails.env.development? %>
+<div class="container">
+  <h1><%= @category.name %></h1>
+  <% @category.posts.each do |post| %>
+    <div class="row">
+      <div class="col-xs-2">
+        <%= post.updated_at.to_formatted_s(:long) %>
+      </div>
+      <div class="col-xs-10">
+        <h4><%= link_to post.title, post_path(post) %></h4>
+      </div>
+    </div>
+  <% end %>
+</div> 

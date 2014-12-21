@@ -64,7 +64,6 @@ class CategoriesController < ApplicationController
   end
 
   def posts
-    render @category.posts
   end
 
   private
