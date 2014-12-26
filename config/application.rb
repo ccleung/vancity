@@ -20,6 +20,9 @@ module RailsDevise
       g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
 
+    # Load application ENV vars and merge with existing ENV vars. Loaded here so can use values in initializers.
+    ENV.update YAML.load_file('config/application.yml')[Rails.env] rescue {}
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
