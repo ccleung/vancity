@@ -1,10 +1,9 @@
 <% content_for :for_form do %>
-	<%= javascript_include_tag 'loadGoogleMaps' %>
-    <%= javascript_include_tag 'disableReturn' %>
+<%= javascript_include_tag 'loadGoogleMaps' %>
+<%= javascript_include_tag 'disableReturn' %>
 <% end %>
-
 <div class="container">
-	<div class="row">
-        <%= render partial: 'form', layout: 'shared/sf_label', locals: { title: 'New Post' } %>
-    </div>
+  <div class="row">
+    <%= render partial: 'form', layout: 'shared/sf_label', locals: { title: 'New Post' } %>
+  </div>
 </div>
