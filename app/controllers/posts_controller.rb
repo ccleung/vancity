@@ -20,14 +20,6 @@ class PostsController < ApplicationController
     @post.description = post_params[:description]
     @post.user_id = current_user.id
 
-    #if image exists we need to create a new image
-    if post_params[:image]
-      @image = Image.new
-      @image.image = post_params[:image]
-      @image.imageable = @post
-      @image.save
-    end
-
     #if location exists we need to create a new location
     if post_params[:location]
       #city, region, country
@@ -47,6 +39,13 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
+        #if image exists we need to create a new image
+        if post_params[:image]
+          @image = Image.new
+          @image.image = post_params[:image]
+          @image.imageable = @post
+          @image.save
+        end
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
