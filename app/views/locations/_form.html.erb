@@ -1,6 +1,6 @@
 <%= simple_form_for(@location) do |f| %>
   <%= f.error_notification %>
-  <%= debug(@location) if Rails.env.development? %> 
+  <%- #debug(@location) if Rails.env.development? -%> 
   <div class="form-inputs">
     <%= f.input :city %>
     <%= f.input :nation %>

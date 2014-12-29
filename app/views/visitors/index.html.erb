@@ -2,16 +2,16 @@
 	<%= stylesheet_link_tag 'visitor' %>
 <% end %>
 
-<section class="want-form">
+<!--<section class="want-form">
 	<div class="post-form-create text-center primary-color">
 		<h3>Post What You Need</h3>
 		<input class="form-control" type="text" placeholder="I need ...">
 	</div>
-</section>
+</section>-->
 
 <div class="container">
-	<%= debug(@goods.categories) if Rails.env.development? %> 
-	<%= debug(@services.categories) if Rails.env.development? %> 
+	<%- #debug(@goods.categories) if Rails.env.development? -%> 
+	<%- #debug(@services.categories) if Rails.env.development? -%> 
   <div class="row">
     <div class="col-xs-6">
     	<div class="row"><h1><%= @goods.name %></h1></div>

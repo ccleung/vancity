@@ -1,4 +1,4 @@
-<%= debug(@category.posts) if Rails.env.development? %>
+<%- #debug(@category.posts) if Rails.env.development? -%>
 <div class="container">
   <h1><%= @category.name %></h1>
   <% @category.posts.each do |post| %>
