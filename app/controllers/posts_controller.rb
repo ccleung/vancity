@@ -91,5 +91,5 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :description, :image, :location, :category)
   end
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show]
 end
