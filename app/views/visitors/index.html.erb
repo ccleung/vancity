@@ -1,5 +1,4 @@
 <% content_for :extra_assets do %>
-<%= stylesheet_link_tag 'visitor' %>
 <% end %>
 <!--<section class="want-form">
   <div class="post-form-create text-center primary-color">
@@ -10,7 +9,7 @@
 <div class="container">
   <%- #debug(@goods.categories) if Rails.env.development? -%>
   <%- #debug(@services.categories) if Rails.env.development? -%>
-  <div class="row">
+  <div class="row main-margins">
     <div class="col-xs-6">
       <div class="row"><h1><%= @goods.name %></h1></div>
       <% @goods.categories.each do |subcategory| %>
