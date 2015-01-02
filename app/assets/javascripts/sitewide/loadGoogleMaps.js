@@ -1,4 +1,5 @@
-$( function() {
+$(document).on("ready page:load", 
+  function() {
   if (typeof google == "undefined") {
     jQuery.getScript("http://maps.google.com/maps/api/js?sensor=false&libraries=places&language=en-US&callback=initialize")
   } 
