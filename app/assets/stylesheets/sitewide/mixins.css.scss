@@ -35,15 +35,14 @@
   &:focus,
   &:active,
   &.active,
-  // TODO: figure out how to addi trailing ampersands
-  .open .dropdown-toggle.btn-primary {
+  .open .dropdown-toggle#{&} {
     color: $color;
     background-color: darken($background, 10%);
         border-color: darken($border, 12%);
   }
   &:active,
   &.active,
-  .open .dropdown-toggle.btn-primary {
+  .open .dropdown-toggle#{&} {
     background-image: none;
   }
   &.disabled,
