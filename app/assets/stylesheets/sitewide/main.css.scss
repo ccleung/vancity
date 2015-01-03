@@ -1,270 +1,80 @@
-body{
-	font-family: 'Montserrat', sans-serif;
-}
-main {
-	padding: 0
-}
-section, p, a{
-	margin: 0;
-	padding: 0
-}
-section.want-form{
-	background: #A4E7E5;
-	background: url(image-path('home-1.jpg') );
-	min-height: 500px;
-	padding: 40px;
-}
-section.recent-posts{
-	padding: 40px;
-}
-.reset-padding { padding: 0}
-.padding-v{
-	padding-top: 20px;
-	padding-bottom: 20px;
-}
-.padding-h{
-	padding-left: 20px;
-	padding-right: 20px;
-}
-.bg-primary { background: #fff}
-.primary-color { color: #fff}
-/****************************************** HOME **********************************/
-.post-form-create{
+@import "mixins";
 
-}
-.post-section-title {
+// Variables
+
+$brand-primary: #fed136;
+$brand-danger: #e74c3c;
+$gray-darkest: #222;
+$gray: #777;
+$gray-lighter: #f7f7f7;
+$placeholder-text: #bbbbbb;
+
+header {
+	background-image: image-url("header-bg.jpg");
+	background-repeat: none;
+	background-attachment: scroll;
+	background-position: center center;
+	@include background-cover;
 	text-align: center;
-	color: #16a085;
-	margin-bottom: 10px;
-	font-size: 30px;
-	font-weight: bold;
+	color: white;
+	.intro-text {
+		padding-top: 100px;
+		padding-bottom: 50px;
+		.intro-lead-in {
+			@include serif-font;
+			font-style: italic;
+			font-size: 22px;
+			line-height: 22px;
+			margin-bottom: 25px;
+		}
+		.intro-heading {
+			@include heading-font;
+			font-weight: 700;
+			font-size: 50px;
+			line-height: 50px;
+			margin-bottom: 25px;
+		}
+	}
 }
-.post-section-subtitle {
-	text-align: center;
-	margin-top: 10px;
-	margin-bottom: 50px;
-	font-family: 'Montserrat', sans-serif;
-	color: #666666;
+
+@media(min-width:768px) {
+	header {
+		.intro-text {
+			padding-top: 300px;
+			padding-bottom: 200px;
+			.intro-lead-in {
+				@include serif-font;
+				font-style: italic;
+				font-size: 40px;
+				line-height: 40px;
+				margin-bottom: 25px;
+			}
+			.intro-heading {
+				@include heading-font;
+				font-weight: 700;
+				font-size: 75px;
+				line-height: 75px;
+				margin-bottom: 50px;
+			}
+		}
+	}
+}
+
+// Restyled Primary Buttons
+
+.btn-primary {
+	@include button-variant(white, $brand-primary, $brand-primary);
+	@include heading-font;
+	font-weight: 700;
+}
+
+.btn-xl {
+	@include button-variant(white, $brand-primary, $brand-primary);
+	@include heading-font;
+	font-weight: 700;
+	border-radius: 3px;
 	font-size: 18px;
-}
-
-.company-holder-block {
-	float: left;
-	width: 100%;
-	border-bottom: solid 5px #fff;
-	position: relative;
-}
-
-#companies-block-list-ul li a {
-	float: left;
-	width: 100%;
-	border-bottom: solid 1px #ecf0f1;
-
-	-webkit-transition: all 0.2s ease;
-	-moz-transition: all 0.2s ease;
-	-o-transition: all 0.2s ease;
-	-ms-transition: all 0.2s ease;
-	transition: all 0.2s ease;
-}
-
-#companies-block {
-	float: left;
-	width: 100%;
-	border-top: solid 1px #ecf0f1;
-}
-
-.company-list-icon img, .company-list-icon {
-	max-width: 50px;
-	max-height: 50px;
-}
-
-.company-list-icon {
-	margin: 20px 0 15px 0;
-	width: 50px;
-    height: 50px;
-    white-space: nowrap;
-    float: left;
-    text-align: center;
-}
-
-.company-list-icon.rounded-img {
-	-webkit-border-radius: 25px;
-	-moz-border-radius: 25px;
-	border-radius: 25px;
-
-	overflow: hidden;
-}
-
-.company-list-icon img {
-	vertical-align: middle;
-	display: inline-block;
-	
-}
-.filters-lists,
-#companies-block-list-ul, 
-.filters-lists-main,
-.filters-lists-location,
-.filters-lists-category {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	float: left;
-	width: 100%;
-}
-
-#companies-block-list-ul li {
-	float: left;
-	width: 100%;
-
-	filter: alpha(opacity=0);
-	-moz-opacity: 0;
-	-khtml-opacity: 0;
-	opacity: 0;
-
-	-webkit-transition: all 0.8s ease;
-	-moz-transition: all 0.8s ease;
-	-o-transition: all 0.8s ease;
-	-ms-transition: all 0.8s ease;
-	transition: all 0.8s ease;
-}
-
-#companies-block-list-ul li.animate {
-	filter: alpha(opacity=1);
-	-moz-opacity: 1;
-	-khtml-opacity: 1;
-	opacity: 1;
-
-	-webkit-transition: all 0.8s ease;
-	-moz-transition: all 0.8s ease;
-	-o-transition: all 0.8s ease;
-	-ms-transition: all 0.8s ease;
-	transition: all 0.8s ease;
-}
-
-#companies-block-list-ul li a:hover .company-holder-block {
-	border-bottom: solid 5px #ecf0f1;
-
-	-webkit-transition: all 0.2s ease;
-	-moz-transition: all 0.2s ease;
-	-o-transition: all 0.2s ease;
-	-ms-transition: all 0.2s ease;
-	transition: all 0.2s ease;
-}
-
-#companies-block-list-ul li a:hover {
-	border-bottom: solid 1px #16a085;
-
-	-webkit-transition: all 0.2s ease;
-	-moz-transition: all 0.2s ease;
-	-o-transition: all 0.2s ease;
-	-ms-transition: all 0.2s ease;
-	transition: all 0.2s ease;
-}
-
-#companies-block-list-ul li a:hover .company-list-badges {
-	filter: alpha(opacity=0);
-	-moz-opacity: 0;
-	-khtml-opacity: 0;
-	opacity: 0;
-
-	-webkit-transition: all 0.2s ease;
-	-moz-transition: all 0.2s ease;
-	-o-transition: all 0.2s ease;
-	-ms-transition: all 0.2s ease;
-	transition: all 0.2s ease;
-}
-
-.company-holder-block .company-list-name-block, 
-.company-holder-block .company-list-name,
-.company-holder-block .company-list-location {
-	float: left;
-	color: #999999;
-}
-
-.company-holder-block .company-list-name,
-.company-holder-block .company-list-location {
-	width: 100%;
-}
-
-.company-holder-block .company-list-location {
-	text-transform: uppercase;
-	font-size: 10px;
-}
-
-.company-holder-block .company-list-location .fa {
-	margin-right: 5px;
-	color: #999999;
-}
-
-.company-holder-block .company-list-name {
-	color: #484848;
-	font-size: 18px;
-	margin-top: 4px;
-	font-family: Roboto Slab;
-
-	-webkit-transition: all 0.2s ease;
-	-moz-transition: all 0.2s ease;
-	-o-transition: all 0.2s ease;
-	-ms-transition: all 0.2s ease;
-	transition: all 0.2s ease;
-}
-
-.company-holder-block .resume-prof-title {
-	font-weight: normal;
-	color: #999999;
-	font-size: 16px;
-}
-
-#companies-block-list-ul li a:hover .company-list-name {
-	color: #1f6797;
-
-	-webkit-transition: all 0.2s ease;
-	-moz-transition: all 0.2s ease;
-	-o-transition: all 0.2s ease;
-	-ms-transition: all 0.2s ease;
-	transition: all 0.2s ease;
-}
-
-.company-holder-block .company-list-name-block {
-	margin: 20px 0 15px 0;
-	margin-left: 30px;
-	width: auto;
-	max-width: 190px;
-}
-
-.company-holder-block .company-list-badges {
-	float: right;
-	margin-top: 9px;
-}
-
-.company-holder-block .company-list-view-profile {
-	float: right;
-	right: 0;
-	position: absolute;
-	margin-top: 9px;
-
-	filter: alpha(opacity=0);
-	-moz-opacity: 0;
-	-khtml-opacity: 0;
-	opacity: 0;
-}
-
-#companies-block-list-ul li a:hover .company-holder-block .company-list-view-profile {
-	float: right;
-	position: absolute;
-	margin-top: 9px;
-
-	filter: alpha(opacity=1);
-	-moz-opacity: 1;
-	-khtml-opacity: 1;
-	opacity: 1;
-}
-
-.company-holder-block .company-list-badges .company-est-year-block,
-.company-holder-block .company-list-badges .company-team-block,
-.company-holder-block .company-list-badges .company-jobs-block {
-	margin-right: 0;
-	margin-bottom: 5px;
+	padding: 20px 40px;
 }
 
 div.main-margins {

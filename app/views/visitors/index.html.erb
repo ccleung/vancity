@@ -1,11 +1,17 @@
 <% content_for :extra_assets do %>
 <% end %>
-<!--<section class="want-form">
-  <div class="post-form-create text-center primary-color">
-    <h3>Post What You Need</h3>
-    <input class="form-control" type="text" placeholder="I need ...">
+
+<!-- Header -->
+<header>
+  <div class="container">
+    <div class="intro-text">
+      <div class="intro-lead-in">Welcome To Our Studio!</div>
+      <div class="intro-heading">It's Nice To Meet You</div>
+      <a href="#services" class="page-scroll btn btn-xl">Tell Me More</a>
+    </div>
   </div>
-</section>-->
+</header>
+
 <div class="container">
   <%- #debug(@goods.categories) if Rails.env.development? -%>
   <%- #debug(@services.categories) if Rails.env.development? -%>
