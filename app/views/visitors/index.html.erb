@@ -31,7 +31,7 @@
                 <i class="fa fa-plus fa-3x"></i>
               </div>
             </div>
-            <i class="fa fa-camera-retro fa-6x"></i>
+            <i class="fa <%= subcategory.icon %> fa-6x"></i>
           <% end %>
           <div class="portfolio-caption">
             <!--<h4><%= subcategory.name %></h4>-->
@@ -42,26 +42,3 @@
     </div>
   </div>
 </section>
-
-<div class="container">
-  <%- #debug(@goods.categories) if Rails.env.development? -%>
-  <%- #debug(@services.categories) if Rails.env.development? -%>
-  <div class="row main-margins">
-    <div class="col-xs-6">
-      <div class="row"><h1><%= @goods.name %></h1></div>
-      <% @goods.categories.each do |subcategory| %>
-      <div class="row" id="<%=subcategory.id%>">
-        <h2><%= link_to subcategory.name, category_posts_path(subcategory) %></h2>
-      </div>
-      <% end %>
-    </div>
-    <div class="col-xs-6">
-      <div class="row"><h1><%= @services.name %></h1></div>
-      <% @services.categories.each do |subcategory| %>
-      <div class="row" id="<%=subcategory.id%>">
-        <h2><%= link_to subcategory.name, category_posts_path(subcategory) %></h2>
-      </div>
-      <% end %>
-    </div>
-  </div>
-</div>

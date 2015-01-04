@@ -14,14 +14,20 @@ puts 'Creating location... ' << location.city
 
 location = Location.find_or_create_by(city: 'Toronto', region: 'ON', country: 'Canada')
 
-root_category_names = ['goods', 'services']
+root_category_names = ['services']
 
 #services = Category.find_or_create_by(name: 'Services')
 #goods = Category.find_or_create_by(name: 'Goods')
 
-sub_category_names = {
-	root_category_names[0] => ['books', 'computers', 'electronics', 'furniture', 'other'],
-	root_category_names[1] => ['photographer', 'ux designer', 'software developer', 'DJ', 'videographer', 'other']
+sub_categories = {
+	#root_category_names[0] => ['books', 'computers', 'electronics', 'furniture', 'other'],
+	root_category_names[0] => [
+		{name: 'photographer', icon: 'fa-camera-retro'}, 
+		{name: 'ux designer', icon: 'fa-pencil-square-o'},
+		{name: 'software developer', icon: 'fa-code'},
+		{name: 'DJ', icon: 'fa-headphones'},
+		{name: 'videographer', icon: 'fa-video-camera'},
+		{name: 'other', icon: 'fa-question'}]
 }
 
 root_categories = []
@@ -33,10 +39,10 @@ for root_category_name in root_category_names
 end
 
 for root_category in root_categories
-	for sub_category_name in sub_category_names[root_category.name]
-		sub_category = Category.new({:name => sub_category_name})
-		puts 'Creating sub category... ' + sub_category.name + ' ' + sub_category.id.to_s
-		root_category.categories << sub_category
+	for sub_category in sub_categories[root_category.name]
+		sub_category_obj = Category.new(sub_category)
+		puts 'Creating sub category... ' + sub_category_obj.name + ' ' + sub_category_obj.id.to_s
+		root_category.categories << sub_category_obj
 	end
 	puts 'ATTEMPING TO SAVE'
 	if root_category.save
