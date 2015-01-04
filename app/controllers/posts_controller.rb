@@ -80,7 +80,7 @@ class PostsController < ApplicationController
     reply_message = params[:reply]
     original_poster = User.find_by_id(@original_post.user_id)
     UserMailer.reply_post_email(replier.email, original_poster.email, reply_message[:title], reply_message[:description]).deliver
-    render plain: 'Your message has been delivered successfully ' + params[:reply].to_s
+    render 'reply_sent'
   end
 
   private

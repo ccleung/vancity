@@ -30,5 +30,5 @@
 	<%= @post.image.image.identifier if @post.image %>
 </p>
 
-<%= button_to "Reply", reply_post_path(@post), method: "get" %>
+<%= button_to "Reply", reply_post_path(@post), method: "get", class: "btn btn-primary" %>
 <%= reply_post_path(@post) %>
