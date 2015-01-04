@@ -1,11 +1,11 @@
 <%- #debug(params) if Rails.env.development? -%>
-<%= simple_form_for @reply, :url => email_reply_post_path(@original_post), :method => :post do |f| %>
+<%= simple_form_for :reply, :url => email_reply_post_path(@original_post), :method => :post do |f| %>
     <%= f.error_notification %>
 
-    <%= f.input :title %>
+    <%= f.input :title, as: :string %>
 
     <%= f.input :description, as: :text %>
 
-    <%= f.button :submit %>
+    <%= f.button :submit, 'Submit' %>
 
 <% end %>

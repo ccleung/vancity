@@ -69,18 +69,18 @@ class PostsController < ApplicationController
   end
 
   def reply
-    @reply = Post.new
     @original_post = Post.find_by_slug(params[:id])
   end
 
   def email_reply
     @original_post = Post.find_by_slug(params[:id])
-    #render plain: post_params[:description]
+    #render plain: params[:reply]
     # send email to original poster
     replier = current_user
+    reply_message = params[:reply]
     original_poster = User.find_by_id(@original_post.user_id)
-    UserMailer.reply_post_email(replier.email, original_poster.email, post_params[:title], post_params[:description]).deliver
-    render plain: 'Your message has been delivered successfully'
+    UserMailer.reply_post_email(replier.email, original_poster.email, reply_message[:title], reply_message[:description]).deliver
+    render plain: 'Your message has been delivered successfully ' + params[:reply].to_s
   end
 
   private
