@@ -9,6 +9,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @category_id = params[:category_id]
   end
 
   def create

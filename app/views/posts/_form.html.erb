@@ -5,7 +5,7 @@
 
     <%= f.input :description, as: :text %>
 
-    <%= f.input :category, as: :select, collection: @categories, prompt: "Choose a category", input_html: { required:"" } %>
+    <%= f.input :category, as: :select, collection: @categories, selected: @category_id, prompt: "Choose a category", input_html: { required:"" } %>
 
     <%= f.input :location, input_html: { id: 'location' } %>
 

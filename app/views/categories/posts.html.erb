@@ -1,6 +1,13 @@
 <%- #debug(@category.posts) if Rails.env.development? -%>
 <div class="container">
-  <h1><%= @category.name %></h1>
+  <div class="row">
+    <div class="col-xs-6">
+      <h1><%= @category.name %></h1>
+    </div>
+    <div class="col-xs-6 text-right button-top-buffer">
+      <%= link_to 'New Post', new_post_path(category_id: @category.id), class: "btn btn-primary" %>
+    </div>
+  </div>
   <% @category.posts.each do |post| %>
     <div class="row">
       <div class="col-xs-2">
