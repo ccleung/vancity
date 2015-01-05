@@ -8,7 +8,7 @@
       <%= link_to 'New Post', new_post_path(category_id: @category.id), class: "btn btn-primary" %>
     </div>
   </div>
-  <% @category.posts.each do |post| %>
+  <% @posts.each do |post| %>
     <div class="row">
       <div class="col-xs-2">
         <%= post.updated_at.to_formatted_s(:long) %>
@@ -18,4 +18,5 @@
       </div>
     </div>
   <% end %>
+  <%= will_paginate @posts %>
 </div> 

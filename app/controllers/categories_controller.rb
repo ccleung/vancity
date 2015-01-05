@@ -64,6 +64,8 @@ class CategoriesController < ApplicationController
   end
 
   def posts
+    @posts = @category.posts.paginate(page: params[:page],
+      per_page: 1).order('updated_at DESC')
   end
 
   private
