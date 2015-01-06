@@ -3,6 +3,6 @@
 FactoryGirl.define do
   factory :category do
     name "MyString"
-    parent false
+    category_id 1
   end
 end
